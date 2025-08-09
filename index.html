@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Virtual Assistant</title>
+  <link rel="icon" href="https://cdn3d.iconscout.com/3d/premium/thumb/robot-8499561-6740636.png">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <img src="virtual.png" alt="Assistant" />
+        <div>
+          <h1>Assistant</h1>
+          <p class="subtitle">Your Virtual Assistant</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="fullscreenBtn" title="Toggle fullscreen">⛶</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="left-panel">
+        <div class="avatar">
+          <img src="virtual.png" alt="avatar" />
+          <div class="status-bubble" id="listeningDot" title="Listening indicator"></div>
+        </div>
+
+        <div class="info">
+          <h2 id="greeting">Initializing...</h2>
+          <p id="subtitle">Click the mic or press <kbd>Space</kbd> to talk</p>
+
+          <div class="actions">
+            <button class="action" data-cmd="joke">Tell me a joke</button>
+            <button class="action" data-cmd="news">Top news</button>
+            <button class="action" data-cmd="weather">Weather</button>
+            <button class="action" data-cmd="note">Take a note</button>
+            <button class="action" data-cmd="remind">Set reminder</button>
+          </div>
+        </div>
+
+        <div class="mic-area">
+          <canvas id="wave" width="500" height="60" aria-hidden="true"></canvas>
+          <button id="micBtn" class="talk" title="Start listening (Space)">
+            <span class="mic-icon">🎤</span>
+          </button>
+        </div>
+
+        <div class="quick-input">
+          <input id="textInput" placeholder="Type a command or question..." />
+          <button id="sendBtn">Send</button>
+        </div>
+      </section>
+
+      <aside class="right-panel">
+        <div class="chat-container" id="chat">
+          <!-- messages appear here -->
+        </div>
+
+        <div class="panel-footer">
+          <div class="notes">
+            <h3>Notes</h3>
+            <ul id="notesList"></ul>
+            <div class="note-actions">
+              <button id="clearNotes">Clear notes</button>
+            </div>
+          </div>
+
+          <div class="reminders">
+            <h3>Reminders</h3>
+            <ul id="remindersList"></ul>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <small> © 2025 Made by Neha Upadhyay. All rights reserved.</small>
+    </footer>
+  </div>
+</body>
+</html>
