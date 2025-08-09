@@ -126,16 +126,19 @@ async function askChatGPT(prompt) {
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: prompt })
+      body: JSON.stringify({ prompt })
     });
+
     const data = await res.json();
-    speak(data.reply);
-    return data.reply;
+    const reply = data.reply;
+    speak(reply);
+    return reply;
   } catch (err) {
     console.error("ChatGPT error:", err);
     speak("Sorry, I couldn't connect to ChatGPT.");
   }
 }
+
 
 /* ---------------- COMMANDS ---------------- */
 async function fetchJoke() { try { const r = await fetch("https://v2.jokeapi.dev/joke/Any?type=single"); const j = await r.json(); return j.joke; } catch { return "Couldn't fetch a joke."; } }
@@ -172,3 +175,4 @@ actionButtons.forEach(b => b.addEventListener('click', () => {
   if (cmd === "note") { const n = prompt("Note?"); if (n) handleCommand(`note ${n}`); }
   if (cmd === "remind") { const m = prompt("Minutes?"); const t = prompt("Reminder?"); if (m && t) handleCommand(`remind me in ${m} minutes to ${t}`); }
 }));
+
